@@ -11,6 +11,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.engine.promote.constant.PromotionEngineConstants;
 import com.engine.promote.entity.Promotions;
 import com.engine.promote.entity.UnitPrice;
 import com.engine.promote.model.PromotionRequest;
@@ -39,6 +40,7 @@ public class PEngineService {
 		Set<String> v = new HashSet<String>();
 		double p=0;
 		
+		
 		if (promoRequest.getCart().size() <=0) {
 			throw new Exception("Cart is empty");
 		}
@@ -51,13 +53,13 @@ public class PEngineService {
 			Optional<Promotions> promotions = pRepo.findById(item);
 			
 			if (promotions.get().isActive()) {
-				if (promotions.get().getPromotion().contentEquals("PROMO_A") || promotions.get().getPromotion().contentEquals("PROMO_B")) {
+				if (promotions.get().getPromotion().contentEquals(PromotionEngineConstants.PROMO_A) || promotions.get().getPromotion().contentEquals(PromotionEngineConstants.PROMO_B)) {
 					Optional<UnitPrice> unitPrice = skRepo.findById(item);
 					v.add(item);
 					p += util.getPriceForN(items.get(item), promotions.get().limit, unitPrice.get().price, promotions.get().pPrice);
 				}
 				
-				if (promotions.get().getPromotion().contentEquals("PROMO_C_D") && !v.contains(item)) {
+				if (promotions.get().getPromotion().contentEquals(PromotionEngineConstants.PROMO_C_D) && !v.contains(item)) {
 
 					Optional<UnitPrice> unitPrice = skRepo.findById("C");
 					Optional<UnitPrice> unitPriceD = skRepo.findById("D");

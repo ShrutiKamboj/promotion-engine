@@ -30,4 +30,5 @@ public class Promotions {
 	
 	@Column(name = "Price")
 	public double pPrice;
+	
 }
