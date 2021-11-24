@@ -29,10 +29,18 @@ class PEngineServiceTest {
 
 	@Test
 	void testGetAmount() {
+		Promotions value = new Promotions();
+		value.setItem("A");
+		value.setActive(true);
+		value.setPromotion("PROMO_A");
+		value.setPPrice(130);
+		value.setLimit(3);
 		
 		Optional<Promotions> promos = Optional.empty();
+		Optional<Promotions> promosA = Optional.of(value);
+		
 		when(pRepo.findById("a")).thenReturn(promos);
-		//fail("Not yet implemented");
+		when(pRepo.findById("A")).thenReturn(promosA);
 	}
 
 }
