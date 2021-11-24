@@ -1,12 +1,10 @@
-CREATE TABLE SKU_UNIT_PRICE(ITEM varchar2(100) PRIMARY KEY, PRICE DECIMAL(16,2));
-CREATE TABLE PROMOTIONS(ITEM varchar2(100) PRIMARY KEY, ACTIVE BIT NOT NULL DEFAULT 1, PROMOTION varchar2(100));
 
-INSERT INTO SKU_UNIT_PRICE VALUES('A', 50);
-INSERT INTO SKU_UNIT_PRICE VALUES('B', 30);
-INSERT INTO SKU_UNIT_PRICE VALUES('C', 20);
-INSERT INTO SKU_UNIT_PRICE VALUES('D', 15);
+INSERT INTO promotions(item, active, promotion, promolimit, price) VALUES('A', 1, 'PROMO_A', 3, 130);
+INSERT INTO promotions(item, active, promotion, promolimit, price) VALUES('B', 1, 'PROMO_B', 2, 45);
+INSERT INTO promotions(item, active, promotion, promolimit, price) VALUES('C', 1, 'PROMO_C_D', 1, 30);
+INSERT INTO promotions(item, active, promotion, promolimit, price) VALUES('D', 1, 'PROMO_C_D', 1, 30);
 
-INSERT INTO PROMOTIONS VALUES('A', 1, 'PROMO_A');
-INSERT INTO PROMOTIONS VALUES('B', 1, 'PROMO_B');
-INSERT INTO PROMOTIONS VALUES('C', 1, 'PROMO_C_D');
-INSERT INTO PROMOTIONS VALUES('D', 1, 'PROMO_C_D');
+INSERT INTO sk_unit_price VALUES('A', 50);
+INSERT INTO sk_unit_price VALUES('B', 30);
+INSERT INTO sk_unit_price VALUES('C', 20);
+INSERT INTO sk_unit_price VALUES('D', 15);
